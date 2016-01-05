@@ -8,7 +8,7 @@ PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/ffwd-bench
+define Package/ffwdh-bench
   SECTION:=gluon
   CATEGORY:=Gluon
   TITLE:=FFWDH Benchmark
@@ -16,7 +16,7 @@ define Package/ffwd-bench
 endef
 
 define Package/ffwdh-bench/description
-    Create a erver on port 10100 and sends default 10MB of zeros on connect with 10kb chunks
+    Create a server on port 10100 and on connect sends default 10MB of zeros with 10kb chunk size
 endef
 
 define Build/Prepare
