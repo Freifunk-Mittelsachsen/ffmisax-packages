@@ -9,9 +9,9 @@ PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 include $(INCLUDE_DIR)/package.mk
 
 define Package/ffwdh-bench
-  SECTION:=gluon
-  CATEGORY:=Gluon
-  TITLE:=FFWDH Benchmark
+  SECTION:=net
+  CATEGORY:=Libraries
+  TITLE:=FFWDH Benchmark tool for ipv6 link local tests
   DEPENDS:=+gluon-core
 endef
 
