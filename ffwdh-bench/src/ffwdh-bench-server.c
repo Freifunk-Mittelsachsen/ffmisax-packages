@@ -1,10 +1,10 @@
-/* 
-    Code is Public Domain 
+/*
+    Code is Public Domain
     Server pipes zeros on port 10100
 
 
 */
-     
+
   #include <sys/types.h>
   #include <sys/socket.h>
   #include <netinet/in.h>
@@ -15,7 +15,7 @@
   #include <unistd.h>
   #include <fcntl.h>
   #include <stdlib.h>
-  
+
   int main(int argc, char *argv[]) {
     char *version = "0.1";
     struct sockaddr_in6 sa;
@@ -30,20 +30,20 @@
       perror("cannot create socket");
       exit(EXIT_FAILURE);
     }
-  
+
     memset(&sa, 0, sizeof sa);
-  
+
     sa.sin6_family = AF_INET6;
     sa.sin6_port = htons(10100);
     /* bind on any address */
     sa.sin6_addr = in6addr_any;
-  
+
     if (-1 == bind(SocketFD,(struct sockaddr *)&sa, sizeof sa)) {
       perror("bind failed");
       close(SocketFD);
       exit(EXIT_FAILURE);
     }
-  
+
     if (-1 == listen(SocketFD, 10)) {
       perror("listen failed");
       close(SocketFD);
@@ -59,25 +59,25 @@
       if(num > 0)
 	 buffersize = (size_t) num;
     }
-	
 
-    printf("Buffersize %i bytes\n",buffersize);
-    
-    
+
+    printf("Buffersize %i bytes\n", (int)buffersize);
+
+
     for (;;) {
-       
+
       ConnectFD = accept(SocketFD, NULL, NULL);
-  
+
       if (0 > ConnectFD) {
         perror("accept failed");
         close(SocketFD);
         exit(EXIT_FAILURE);
       }
-	
+
       char data_buffer[buffersize];
 
       while(read(dev_zero,data_buffer, (sizeof data_buffer))) {
-	    printf("Sending %i bytes of zeros ...\n", buffersize);
+	    printf("Sending %i bytes of zeros ...\n", (int)buffersize);
 	    send(ConnectFD,data_buffer,(sizeof data_buffer), MSG_DONTROUTE);
       }
 
@@ -89,5 +89,5 @@
     }
 
     close(SocketFD);
-    return EXIT_SUCCESS;  
+    return EXIT_SUCCESS;
 }
