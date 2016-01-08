@@ -12,7 +12,7 @@ define Package/ffwdh-bench
   SECTION:=net
   CATEGORY:=Libraries
   TITLE:=FFWDH Benchmark tool for ipv6 link local tests
-  DEPENDS:=+gluon-core
+  DEPENDS:=+gluon-core +libc
 endef
 
 define Package/ffwdh-bench/description
@@ -33,7 +33,8 @@ endef
 
 define Package/ffwdh-bench/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ffwdh-bench $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ffwdh-bench-server $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ffwdh-bench-server $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,ffwdh-bench))
