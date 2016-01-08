@@ -1,5 +1,9 @@
-all: server
+all: ffwdh-bench-server
 
-server: server.c
+CFLAGS += -Wall
 
-client: client.c
+ffwdh-bench-server:
+		$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ ffwdh-bench-server.c $(LDLIBS)
+
+ffwdh-bench-client:
+		$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ ffwdh-bench-client.c $(LDLIBS)
