@@ -105,9 +105,9 @@
     /* take time before */
     gettimeofday(&tval_before, NULL);
 
-    for(actual_read; actual_read <= read_size; actual_read += read_buffer_size) {
-	char buffer[read_buffer_size];
-	read(SocketFD,buffer,read_buffer_size);
+    while (actual_read <= read_size) {
+	     char buffer[read_buffer_size];
+	      actual_read += read(SocketFD,buffer,read_buffer_size);
     }
 
     /* take time after reading and divide */
