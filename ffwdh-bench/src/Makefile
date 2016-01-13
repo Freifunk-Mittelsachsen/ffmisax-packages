@@ -1,4 +1,4 @@
-all: ffwdh-bench-server
+all: ffwdh-bench-server ffwdh-bench-client
 
 CFLAGS += -Wall
 

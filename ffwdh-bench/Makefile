@@ -33,7 +33,7 @@ endef
 
 define Package/ffwdh-bench/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ffwdh-bench-server $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ffwdh-bench-client $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ffwdh-bench-server $(1)/usr/bin/
 endef
 
